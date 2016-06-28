@@ -252,7 +252,8 @@ namespace AppPromo
 #if WIN_RT
             try
             {
-                await Launcher.LaunchUriAsync(new Uri("ms-windows-store:reviewapp?appid=" + CurrentApp.AppId));
+                var familyName = Windows.ApplicationModel.Package.Current.Id.FamilyName;
+                await Launcher.LaunchUriAsync(new Uri("ms-windows-store://review/?PFN=" + familyName));
             }
             catch (Exception)
             {
